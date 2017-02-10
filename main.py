@@ -16,8 +16,9 @@ def login():
             session['username'] = username
             return redirect(url_for('home'))
         else:
+            session.clear()
             error = 'Invalid Credentials. Please try again.'
-            
+
     return render_template('login.html', error=error)
 
 @app.route('/')
