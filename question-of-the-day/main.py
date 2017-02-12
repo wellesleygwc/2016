@@ -6,6 +6,7 @@ from app import db
 
 app = Flask(__name__)
 
+# Login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -21,6 +22,7 @@ def login():
 
     return render_template('login.html', error=error)
 
+# Home page
 @app.route('/')
 @app.route('/home', methods=['GET', 'POST'])
 def home():
