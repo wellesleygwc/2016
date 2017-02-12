@@ -35,4 +35,3 @@ if __name__== "__main__":
     db.create_db()
     app.secret_key = os.urandom(24)
     app.run(debug=True)
-    
