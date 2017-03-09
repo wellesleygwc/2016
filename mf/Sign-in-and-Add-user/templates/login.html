@@ -19,5 +19,18 @@
         <p class="error"><strong>Error:</strong> {{ error }}
       {% endif %}
     </div>
+
+<h2>If you do not have an account, please sign up</h2>
+    <form action="add user" method="post">
+        <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+         <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        <input class="btn btn-default" type="submit" value="Sign Up">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
   </body>
 </html>
