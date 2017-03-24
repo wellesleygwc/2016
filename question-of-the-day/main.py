@@ -29,7 +29,9 @@ def login():
 def home():
     error = None
     if 'username' in session:
-        return render_template('index.html', username=session['username'])
+        username=session['username']
+
+        return render_template('index.html', username=username, email=db.get_email(username), total_answers=db.get_total_answers(username), right_answers=db.get_right_answers(username))
     return redirect(url_for('login'))
 
 if __name__== "__main__":
