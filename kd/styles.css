@@ -1,0 +1,29 @@
+    body{
+        text-align: center;
+        background-color: rgb(220, 193, 255);
+        }
+
+    p1 {
+        color: rgb(0, 188, 186);
+        font-size: 35px;
+        border: 2px solid rgb(229, 84, 123);
+        border-radius: 5px;
+
+        }
+
+
+     #answer-button {
+        color: rgb(0, 188, 186);
+        background: black;
+        font-family: "Lucida Console";
+        font-size: 25px;
+        border: 2px solid black;
+        border-style: dashed;
+        border-radius: 12px;
+        }
+
+     p3 {
+        border: 2px solid rgb(229, 84, 123);
+        border-radius: 1px;
+        border-style: dotted;
+        }
