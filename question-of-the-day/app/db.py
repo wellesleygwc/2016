@@ -8,7 +8,12 @@ def create_db():
     cursor = connection.cursor()
     
     # Create a table and add a record to it
-    cursor.execute("create table if not exists users(username text primary key not null, password text not null, email text not null, total_answers int not null, right_answers int not null)")
+    cursor.execute("create table if not exists users("+
+                   "username text primary key not null" +
+                   ", password text not null" +
+                   ", email text not null" +
+                   ", total_answers int not null default 0" +
+                   ", right_answers int not null default 0)")
     cursor.execute("insert or ignore into users values ('admin', 'admin', 'admin@gwc.com', 10, 5 )")
 
     # Save (commit) the changes
@@ -65,3 +70,14 @@ def get_right_answers(username):
     connection.close()
 
     return row[0]
+
+def create_user(username, password, email):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Try to retrieve a record from the users table that matches the usename and password
+    cursor.execute("insert or ignore into users (username, password, email) values ('%s', '%s', '%s')" % (username, password, email))
+    connection.commit()
+    connection.close()
+
+    return True

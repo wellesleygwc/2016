@@ -23,6 +23,23 @@ def login():
 
     return render_template('login.html', error=error)
 
+# Add a user
+@app.route('/add user', methods=['GET', 'POST'])
+def addUser():
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+        if db.create_user(username, password, email):
+            session['username'] = username
+            return redirect(url_for('home'))
+        else:
+            session.clear()
+            error = 'Invalid Credentials. Please try again.'
+
+    return render_template('login.html', error=error)
+
 # Home page
 @app.route('/')
 @app.route('/home', methods=['GET', 'POST'])
