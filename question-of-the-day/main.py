@@ -40,6 +40,11 @@ def addUser():
 
     return render_template('login.html', error=error)
 
+#archives
+@app.route('/archives')
+def archives():
+    return render_template('Archives.html')
+
 # Home page
 @app.route('/')
 @app.route('/home', methods=['GET', 'POST'])
@@ -55,3 +60,5 @@ if __name__== "__main__":
     db.create_db()
     app.secret_key = os.urandom(24)
     app.run(debug=True)
+
+
