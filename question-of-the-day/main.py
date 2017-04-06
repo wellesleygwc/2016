@@ -7,6 +7,13 @@ from app import db
 
 app = Flask(__name__)
 
+
+# Home page
+@app.route('/Home')
+def Home():
+    return render_template('HomePage.html')
+
+
 # Login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -40,10 +47,11 @@ def addUser():
 
     return render_template('login.html', error=error)
 
-# Home page
+
+# Login Page
 @app.route('/')
-@app.route('/home', methods=['GET', 'POST'])
-def home():
+@app.route('/logins', methods=['GET', 'POST'])
+def logins():
     error = None
     if 'username' in session:
         username=session['username']
