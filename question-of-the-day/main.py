@@ -60,7 +60,7 @@ def logins():
     if 'username' in session:
         username=session['username']
 
-        return render_template('index.html', username=username, email=db.get_email(username), total_answers=db.get_total_answers(username), right_answers=db.get_right_answers(username))
+        return render_template('Profile.html', username=username, email=db.get_email(username), total_answers=db.get_total_answers(username), right_answers=db.get_right_answers(username))
     return redirect(url_for('login'))
 
 if __name__== "__main__":

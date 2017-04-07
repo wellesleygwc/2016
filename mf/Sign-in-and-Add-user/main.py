@@ -46,7 +46,7 @@ def addUser():
 def home():
     error = None
     if 'username' in session:
-        return render_template('index.html', username=session['username'])
+        return render_template('Profile.html', username=session['username'])
     return redirect(url_for('login'))
 
 if __name__== "__main__":
