@@ -19,7 +19,8 @@ def create_db():
     cursor.execute("create table if not exists questions("+
                    "number integer primary key autoincrement" +
                    ", question text not null" +
-                   ", answer text not null)")
+                   ", answer text not null" +
+                   ", constraint questions_unique unique (question))")
     cursor.execute("insert or ignore into questions ('question', 'answer') values ('This is a question', 'A')")
 
     cursor.execute("create table if not exists answers("+
