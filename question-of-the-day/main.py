@@ -47,8 +47,12 @@ def addUser():
 
     return render_template('login.html', error=error)
 
+#archives
+@app.route('/archives')
+def archives():
+    return render_template('Archives.html')
 
-# Login Page
+# Login page
 @app.route('/')
 @app.route('/logins', methods=['GET', 'POST'])
 def logins():
