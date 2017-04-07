@@ -16,6 +16,20 @@ def create_db():
                    ", right_answers int not null default 0)")
     cursor.execute("insert or ignore into users values ('admin', 'admin', 'admin@gwc.com', 10, 5 )")
 
+    cursor.execute("create table if not exists questions("+
+                   "number integer primary key autoincrement" +
+                   ", question text not null" +
+                   ", answer text not null)")
+    cursor.execute("insert or ignore into questions ('question', 'answer') values ('This is a question', 'A')")
+
+    cursor.execute("create table if not exists answers("+
+                   "username text not null" +
+                   ", number integer not null" +
+                   ", user_answer text not null" +
+                   ", primary key (username, number))")
+    cursor.execute("insert or ignore into answers values ('admin', '1', 'B')")
+
+
     # Save (commit) the changes
     connection.commit()
     
