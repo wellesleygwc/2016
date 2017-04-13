@@ -12,6 +12,16 @@ starting to work on list that we will eventually make question titles
 
 added table = color
 
+—
+
+table good
+
+—
+
+CSS in
+
+spacing not so good(need to search color thing)
+
 
 
 ## Home
@@ -24,6 +34,7 @@ Copyright
 
 About us
 
+—
 
 
 ## Log in/log out
@@ -35,6 +46,10 @@ Title
 link/botten
 
 researching how to log in/out
+
+—
+
+text boxes for login and sign up
 
 
 
@@ -56,6 +71,20 @@ place for username
 
 new file to make all pages the same
 
+—
+
+slogen
+
+colors
+
+—
+
+ in templates
+
+—
+
+most but not all updated
+
 
 
 ## Database
@@ -66,3 +95,10 @@ email
 
  right answers
 
+—
+
+substitute link
+
+—
+
+two new tables Questions/ Answers
