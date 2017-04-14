@@ -52,6 +52,11 @@ def addUser():
 def archives():
     return render_template('Archives.html')
 
+#Question
+@app.route('/Question')
+def question():
+    return render_template('Question.html')
+
 # Login page
 @app.route('/')
 @app.route('/logins', methods=['GET', 'POST'])
@@ -59,9 +64,14 @@ def logins():
     error = None
     if 'username' in session:
         username=session['username']
-
         return render_template('Profile.html', username=username, email=db.get_email(username), total_answers=db.get_total_answers(username), right_answers=db.get_right_answers(username))
     return redirect(url_for('login'))
+
+#Profile
+@app.route('/Profile')
+def profile():
+    return render_template('Profile.html')
+
 
 if __name__== "__main__":
     db.create_db()
