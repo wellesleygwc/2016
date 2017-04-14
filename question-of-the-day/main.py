@@ -23,7 +23,7 @@ def login():
         password = request.form['password']
         if db.check_password(username, password):
             session['username'] = username
-            return redirect(url_for('home'))
+            return redirect(url_for('Home'))
         else:
             session.clear()
             error = 'Invalid Credentials. Please try again.'
@@ -59,9 +59,14 @@ def logins():
     error = None
     if 'username' in session:
         username=session['username']
-
         return render_template('Profile.html', username=username, email=db.get_email(username), total_answers=db.get_total_answers(username), right_answers=db.get_right_answers(username))
     return redirect(url_for('login'))
+
+#Profile
+@app.route('/Profile')
+def profile():
+    return render_template('Profile.html')
+
 
 if __name__== "__main__":
     db.create_db()
