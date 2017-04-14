@@ -23,7 +23,7 @@ def login():
         password = request.form['password']
         if db.check_password(username, password):
             session['username'] = username
-            return redirect(url_for('home'))
+            return redirect(url_for('Home'))
         else:
             session.clear()
             error = 'Invalid Credentials. Please try again.'

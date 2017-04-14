@@ -26,6 +26,21 @@
 
     }
 
+    #login-header{
+
+
+
+
+    }
+
+    #log-in-box{
+    border-style: solid;
+    border-color: rgb(0, 33, 119);
+    border-width: 4px;
+
+    }
+
+
     p1 {
         color: rgb(0, 188, 186);
         font-size: 35px;
