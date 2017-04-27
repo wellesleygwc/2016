@@ -22,6 +22,8 @@ def create_db():
                    ", answer text not null" +
                    ", constraint questions_unique unique (question))")
     cursor.execute("insert or ignore into questions ('question', 'answer') values ('This is a question', 'A')")
+    cursor.execute("insert or ignore into questions ('question', 'answer') values ('This is a question', 'A')")
+    cursor.execute("insert or ignore into questions ('question', 'answer') values ('This is a question', 'A')")
 
     cursor.execute("create table if not exists answers("+
                    "username text not null" +
@@ -29,6 +31,9 @@ def create_db():
                    ", user_answer text not null" +
                    ", primary key (username, number))")
     cursor.execute("insert or ignore into answers values ('admin', '1', 'B')")
+
+
+
 
 
     # Save (commit) the changes
@@ -56,6 +61,18 @@ def get_email(username):
 
     # Try to retrieve a record from the users table that matches the username and password
     cursor.execute("select email from users where username='%s'" % (username))
+    row = cursor.fetchone()
+
+    connection.close()
+
+    return row[0]
+
+def get_question(number):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    # Try to retrieve a record from the users table that matches the username and password
+    cursor.execute("select question,answer from questions where number=%s" % (number))
     row = cursor.fetchone()
 
     connection.close()

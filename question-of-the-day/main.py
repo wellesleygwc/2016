@@ -53,9 +53,11 @@ def archives():
     return render_template('Archives.html')
 
 #Question
-@app.route('/Question')
+@app.route('/question')
 def question():
-    return render_template('Question.html')
+    id = request.args.get('id')
+    question = db.get_question(id)
+    return render_template('Question.html',question=question)
 
 # Login page
 @app.route('/')
