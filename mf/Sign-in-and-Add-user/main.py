@@ -7,13 +7,6 @@ from app import db
 
 app = Flask(__name__)
 
-
-# Home page
-@app.route('/Home')
-def Home():
-    return render_template('HomePage.html')
-
-
 # Login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -23,22 +16,21 @@ def login():
         password = request.form['password']
         if db.check_password(username, password):
             session['username'] = username
-            return redirect(url_for('Home'))
+            return redirect(url_for('home'))
         else:
             session.clear()
             error = 'Invalid Credentials. Please try again.'
 
     return render_template('login.html', error=error)
 
-# Add a user
+
 @app.route('/add user', methods=['GET', 'POST'])
 def addUser():
     error = None
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        email = request.form['email']
-        if db.create_user(username, password, email):
+        if db.create_user(username, password):
             session['username'] = username
             return redirect(url_for('home'))
         else:
@@ -47,31 +39,15 @@ def addUser():
 
     return render_template('login.html', error=error)
 
-#archives
-@app.route('/archives')
-def archives():
-    return render_template('Archives.html')
 
-#Question
-@app.route('/Question')
-def question():
-    return render_template('Question.html')
-
-# Login page
+# Home page
 @app.route('/')
-@app.route('/logins', methods=['GET', 'POST'])
-def logins():
+@app.route('/home', methods=['GET', 'POST'])
+def home():
     error = None
     if 'username' in session:
-        username=session['username']
-        return render_template('Profile.html', username=username, email=db.get_email(username), total_answers=db.get_total_answers(username), right_answers=db.get_right_answers(username))
+        return render_template('Profile.html', username=session['username'])
     return redirect(url_for('login'))
-
-#Profile
-@app.route('/Profile')
-def profile():
-    return render_template('Profile.html')
-
 
 if __name__== "__main__":
     db.create_db()
