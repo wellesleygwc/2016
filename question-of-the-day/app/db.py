@@ -20,10 +20,10 @@ def create_db():
                    "number integer primary key autoincrement" +
                    ", question text not null" +
                    ", answer text not null" +
+                   ", day date not null" +
                    ", constraint questions_unique unique (question))")
-    cursor.execute("insert or ignore into questions ('question', 'answer') values ('This is a question', 'A')")
-    cursor.execute("insert or ignore into questions ('question', 'answer') values ('This is a question', 'A')")
-    cursor.execute("insert or ignore into questions ('question', 'answer') values ('This is a question', 'A')")
+    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a function?', 'A', '2017-04-27')")
+    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a loop?', 'B', '2017-04-26')")
 
     cursor.execute("create table if not exists answers("+
                    "username text not null" +
@@ -113,3 +113,14 @@ def create_user(username, password, email):
     connection.close()
 
     return True
+
+def question_summary():
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    cursor.execute("select number, question, day from questions order by day DESC")
+    rows = cursor.fetchall()
+    print rows
+    connection.close()
+
+    return rows

@@ -50,7 +50,9 @@ def addUser():
 #archives
 @app.route('/archives')
 def archives():
-    return render_template('Archives.html')
+    summary = db.question_summary()
+    print summary
+    return render_template('Archives.html', summary=summary)
 
 #Question
 @app.route('/question')
