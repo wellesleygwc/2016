@@ -41,48 +41,14 @@ font-size: 40;
     <tr>
         <th>Date</th>
         <th>Questions</th>
-        <th>Answer Now</th>
     </tr>
+    {% for question in summary %}
     <tr>
-        <td>3/30/17</td>
-        <td><a href="Question"> What is a function?</a></td>
-        <td>this is a link(not)</td>
+        <td>{{ question[2] }}</td>
+        <td><a href="question?id={{question[0]}}"> {{ question[1] }}</a></td>
     </tr>
-    <tr>
-        <td>3/29/17</td>
-        <td>What is a loop?</td>
-        <td>this is a link(not)</td>
-    </tr>
-    <tr>
-        <td>3/28/17</td>
-        <td>When do you use a loop?</td>
-        <td>this is a link(not)</td>
-    </tr>
-    <tr>
-        <td>3/27/17</td>
-        <td>When do you use a function?</td>
-        <td>this is a link(not)</td>
-    </tr>
-    <tr>
-        <td>3/26/17</td>
-        <td>What is a varible?</td>
-        <td>this is a link(not)</td>
-    </tr>
-    <tr>
-        <td>3/25/17</td>
-        <td>Which of these is not a function?</td>
-        <td>this is a link(not)
-    </td>
-    <tr>
-        <td>3/24/17</td>
-        <td>When do you use a varible?</td>
-        <td>this is a link(not)</td>
-    </tr>
-    <tr>
-        <td>3/23/17</td>
-        <td>Why use a varible?</td>
-        <td>this is a link(not)</td>
-    </tr>
+    {% endfor %}
+
 </table>
 </body>
 </html>
