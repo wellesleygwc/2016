@@ -50,12 +50,16 @@ def addUser():
 #archives
 @app.route('/archives')
 def archives():
-    return render_template('Archives.html')
+    summary = db.question_summary()
+    print summary
+    return render_template('Archives.html', summary=summary)
 
 #Question
-@app.route('/Question')
+@app.route('/question')
 def question():
-    return render_template('Question.html')
+    id = request.args.get('id')
+    question = db.get_question(id)
+    return render_template('Question.html',question=question)
 
 # Login page
 @app.route('/')
@@ -71,6 +75,10 @@ def logins():
 @app.route('/Profile')
 def profile():
     return render_template('Profile.html')
+
+@app.route('/Change_Password')
+def Change_password():
+    return render_template('change_password.html')
 
 
 if __name__== "__main__":
