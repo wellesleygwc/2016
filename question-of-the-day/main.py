@@ -72,6 +72,10 @@ def logins():
 def profile():
     return render_template('Profile.html')
 
+@app.route('/Change_Password')
+def Change_password():
+    return render_template('change_password.html')
+
 
 if __name__== "__main__":
     db.create_db()
