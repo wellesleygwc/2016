@@ -25,21 +25,21 @@ def create_db():
     cursor.execute("insert or ignore into questions values ('Q0', 'What is a function?', 'A', '2017-04-27')")
     cursor.execute("insert or ignore into questions values ('Q1', 'What is a loop?', 'B', '2017-04-26')")
 
-    cursor.execute("create table if not exists useranswers("+
+    cursor.execute("create table if not exists user_answers("+
                    "username text not null" +
                    ", number integer not null" +
                    ", user_answer text not null" +
                    ", primary key (username, number))")
-    cursor.execute("insert or ignore into answers values ('admin', '1', 'B')")
+    cursor.execute("insert or ignore into user_answers values ('admin', '1', 'B')")
 
     cursor.execute("create table if not exists answers(" +
-                   ", question_id text not null" +
+                   "question_id text not null" +
                    ", letter text not null" +
-                   ", answer_text text not null"
-                   )
-    cursor.execute("insert or ignore into answers ('question_id', 'letter', 'answer_text') values ('Q0', 'A', 'A named section of a program that performs a specific task')")
-    cursor.execute("insert or ignore into answers ('question_id', 'letter', 'answer_text') values ('Q0', 'B', 'A social gathering')")
-
+                   ", answer_text text not null)")
+    cursor.execute("insert or ignore into answers values ('Q0', 'A', 'A named section of a program that performs a specific task')")
+    cursor.execute("insert or ignore into answers values ('Q0', 'B', 'A social gathering')")
+    cursor.execute("insert or ignore into answers values ('Q1', 'A', 'A breakfast cereal')")
+    cursor.execute("insert or ignore into answers values ('Q1', 'B', 'A sequence of instructions that is repeated until a certain condition is reached')")
 
     # Save (commit) the changes
     connection.commit()
