@@ -17,23 +17,28 @@ def create_db():
     cursor.execute("insert or ignore into users values ('admin', 'admin', 'admin@gwc.com', 10, 5 )")
 
     cursor.execute("create table if not exists questions("+
-                   "number integer primary key autoincrement" +
+                   "id text primary key" +
                    ", question text not null" +
                    ", answer text not null" +
                    ", day date not null" +
                    ", constraint questions_unique unique (question))")
-    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a function?', 'A', '2017-04-27')")
-    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a loop?', 'B', '2017-04-26')")
+    cursor.execute("insert or ignore into questions values ('Q0', 'What is a function?', 'A', '2017-04-27')")
+    cursor.execute("insert or ignore into questions values ('Q1', 'What is a loop?', 'B', '2017-04-26')")
 
-    cursor.execute("create table if not exists answers("+
+    cursor.execute("create table if not exists useranswers("+
                    "username text not null" +
                    ", number integer not null" +
                    ", user_answer text not null" +
                    ", primary key (username, number))")
     cursor.execute("insert or ignore into answers values ('admin', '1', 'B')")
 
-
-
+    cursor.execute("create table if not exists answers(" +
+                   ", question_id text not null" +
+                   ", letter text not null" +
+                   ", answer_text text not null"
+                   )
+    cursor.execute("insert or ignore into answers ('question_id', 'letter', 'answer_text') values ('Q0', 'A', 'A named section of a program that performs a specific task')")
+    cursor.execute("insert or ignore into answers ('question_id', 'letter', 'answer_text') values ('Q0', 'B', 'A social gathering')")
 
 
     # Save (commit) the changes
@@ -42,6 +47,7 @@ def create_db():
     # We can also close the connection if we are done with it.
     # Just be sure any changes have been committed or they will be lost.
     connection.close()
+
 
 def check_password(username, password):
     connection = sqlite3.connect(database_file)
@@ -124,3 +130,5 @@ def question_summary():
     connection.close()
 
     return rows
+
+
