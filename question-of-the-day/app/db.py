@@ -8,6 +8,7 @@ def create_db():
     cursor = connection.cursor()
     
     # Create a table and add a record to it
+    cursor.execute("drop table users")
     cursor.execute("create table if not exists users("+
                    "username text primary key not null" +
                    ", password text not null" +
@@ -16,6 +17,7 @@ def create_db():
                    ", right_answers int not null default 0)")
     cursor.execute("insert or ignore into users values ('admin', 'admin', 'admin@gwc.com', 10, 5 )")
 
+    cursor.execute("drop table questions")
     cursor.execute("create table if not exists questions("+
                    "id text primary key" +
                    ", question text not null" +
@@ -25,6 +27,7 @@ def create_db():
     cursor.execute("insert or ignore into questions values ('Q0', 'What is a function?', 'A', '2017-04-27')")
     cursor.execute("insert or ignore into questions values ('Q1', 'What is a loop?', 'B', '2017-04-26')")
 
+    cursor.execute("drop table user_answers")
     cursor.execute("create table if not exists user_answers("+
                    "username text not null" +
                    ", number integer not null" +
