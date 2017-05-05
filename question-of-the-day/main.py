@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 # Home page
-@app.route('/Home')
+@app.route('/home')
 def Home():
     return render_template('HomePage.html')
 
@@ -72,7 +72,7 @@ def logins():
     return redirect(url_for('login'))
 
 #Profile
-@app.route('/Profile')
+@app.route('/profile')
 def profile():
     return render_template('Profile.html')
 
