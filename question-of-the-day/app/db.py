@@ -23,6 +23,10 @@ def create_db():
                    ", day date not null" +
                    ", constraint questions_unique unique (question))")
     cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a function?', 'A', '2017-04-27')")
+    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What does HTML stand for?', 'A', '2017-04-27')")
+    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a variable?', 'B', '2017-04-27')")
+    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('Which would print “hello world”?', 'D', '2017-04-27')")
+    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('Which would print “hello world”?', 'D', '2017-04-27')")
     cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a loop?', 'B', '2017-04-26')")
 
     cursor.execute("create table if not exists answers("+
