@@ -13,7 +13,6 @@ app = Flask(__name__)
 def Home():
     return render_template('HomePage.html')
 
-
 # Login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -51,7 +50,6 @@ def addUser():
 @app.route('/archives')
 def archives():
     summary = db.question_summary()
-    print summary
     return render_template('Archives.html', summary=summary)
 
 #Question
@@ -61,11 +59,11 @@ def question():
     question = db.get_question(id)
     return render_template('Question.html', question=question, answers=db.get_question_answers(id))
 
+
 # Login page
 @app.route('/')
 @app.route('/logins', methods=['GET', 'POST'])
 def logins():
-    error = None
     if 'username' in session:
         username=session['username']
         return render_template('Profile.html', username=username, email=db.get_email(username), total_answers=db.get_total_answers(username), right_answers=db.get_right_answers(username))

@@ -29,8 +29,7 @@ def create_db():
     cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a function?', 'A', '2017-04-27')")
     cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What does HTML stand for?', 'A', '2017-04-27')")
     cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a variable?', 'B', '2017-04-27')")
-    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('Which would print “hello world”?', 'D', '2017-04-27')")
-    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('Which would print “hello world”?', 'D', '2017-04-27')")
+    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('Which would print \"hello world\"?', 'D', '2017-04-27')")
     cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a loop?', 'B', '2017-04-26')")
 
     cursor.execute("drop table if exists user_answers")
