@@ -59,7 +59,7 @@ def archives():
 def question():
     id = request.args.get('id')
     question = db.get_question(id)
-    return render_template('Question.html',question=question)
+    return render_template('Question.html', question=question, answers=db.get_question_answers(id))
 
 # Login page
 @app.route('/')
