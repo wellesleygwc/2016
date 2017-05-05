@@ -32,10 +32,12 @@ def create_db():
                    ", primary key (username, number))")
     cursor.execute("insert or ignore into user_answers values ('admin', '1', 'B')")
 
+    cursor.execute("drop table answers")
     cursor.execute("create table if not exists answers(" +
                    "question_id text not null" +
                    ", letter text not null" +
                    ", answer_text text not null)")
+
     cursor.execute("insert or ignore into answers values ('Q0', 'A', 'A named section of a program that performs a specific task')")
     cursor.execute("insert or ignore into answers values ('Q0', 'B', 'A social gathering')")
     cursor.execute("insert or ignore into answers values ('Q1', 'A', 'A breakfast cereal')")
@@ -73,12 +75,12 @@ def get_email(username):
 
     return row[0]
 
-def get_question(number):
+def get_question(id):
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
 
     # Try to retrieve a record from the users table that matches the username and password
-    cursor.execute("select question,answer from questions where number=%s" % (number))
+    cursor.execute("select question, answer from questions where id='%s'" % (id))
     row = cursor.fetchone()
 
     connection.close()
@@ -96,6 +98,18 @@ def get_total_answers(username):
     connection.close()
 
     return row[0]
+
+def get_question_answers(id):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    cursor.execute("select * from answers where question_id='%s'" % (id))
+    rows = cursor.fetchall()
+    print rows
+    connection.close()
+
+    return rows
+
 
 def get_right_answers(username):
     connection = sqlite3.connect(database_file)
@@ -124,7 +138,7 @@ def question_summary():
     connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
 
-    cursor.execute("select number, question, day from questions order by day DESC")
+    cursor.execute("select id, question, day from questions order by day DESC")
     rows = cursor.fetchall()
     print rows
     connection.close()

@@ -18,11 +18,14 @@ Enter your answer here:
 <br/>
 <br/>
 
+{% for answer in answers %}
+<ul>
+    <li> {{answer[2]}} </li>
+</ul>
+
+{% endfor %}
 </body>
-<textarea rows = "25" cols = "75">
 
-
-</textarea>
  <br/>
 <br/>
 <button type="button"> Check Answer </button>
