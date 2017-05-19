@@ -7,14 +7,20 @@ text-shadow: 3px 2px red;
 
 
     }
+    #links {
 
+        font-size: 25px;
+     padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
+    }
     #email {
 
-#links {
 
-font-size: 40px;
 
-    }}
+    }
 
     #total {
 
