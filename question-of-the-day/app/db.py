@@ -44,12 +44,15 @@ def create_db():
     cursor.execute("create table if not exists answers(" +
                    "question_id text not null" +
                    ", letter text not null" +
-                   ", answer_text text not null)")
+                   ", answer_text text not null" +
+                   ", correct_text not null)")
 
-    cursor.execute("insert or ignore into answers values ('Q0', 'A', 'A named section of a program that performs a specific task')")
-    cursor.execute("insert or ignore into answers values ('Q0', 'B', 'A social gathering')")
-    cursor.execute("insert or ignore into answers values ('Q1', 'A', 'A breakfast cereal')")
-    cursor.execute("insert or ignore into answers values ('Q1', 'B', 'A sequence of instructions that is repeated until a certain condition is reached')")
+    cursor.execute("insert or ignore into answers values ('Q0', 'A', 'A named section of a program that performs a specific task', 'r')")
+    cursor.execute("insert or ignore into answers values ('Q0', 'B', 'A social gathering', 'w')")
+    cursor.execute("insert or ignore into answers values ('Q1', 'A', 'A breakfast cereal', 'w')")
+    cursor.execute("insert or ignore into answers values ('Q1', 'B', 'A sequence of instructions that is repeated until a certain condition is reached', 'r')")
+
+
 
     # Save (commit) the changes
     connection.commit()
