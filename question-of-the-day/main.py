@@ -59,6 +59,16 @@ def question():
     question = db.get_question(id)
     return render_template('Question.html', question=question, answers=db.get_question_answers(id))
 
+#Answers
+@app.route('/answers', methods=['GET', 'POST'])
+def answers():
+    correct = request.form['answer']
+    id = 0
+    if correct == 'w':
+        id = str('Your answer is wrong.')
+    elif correct == 'r':
+        id = str('Your answer is correct! Good job!')
+    return render_template('answers.html', id=id)
 
 # Login page
 @app.route('/')
