@@ -74,9 +74,17 @@ def logins():
 def profile():
     return render_template('Profile.html')
 
-@app.route('/Change_Password')
-def Change_password():
-    return render_template('change_password.html')
+@app.route('/change password', methods=['GET', 'POST'])
+def change_password():
+    new_password=request.form['new_password']
+    confirm_password=request.form['confirm_password']
+    if new_password!=confirm_password:
+        return render_template('Profile.html', error_message="passwords don't match")
+    username=session['username']
+    old_password=request.form['new_password']
+    status = db.change_password(username, old_password, new_password)
+    return render_template('Profile.html', error_message=status)
+
 
 
 if __name__== "__main__":

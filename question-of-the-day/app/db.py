@@ -153,4 +153,17 @@ def question_summary():
 
     return rows
 
+def change_password(username, old_password, new_password):
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
 
+    # Try to retrieve a record from the users table that matches the username and password
+    cursor.execute("select * from users where username='%s' and password='%s'" % (username, old_password))
+    rows = cursor.fetchall()
+
+    connection.close()
+
+    if len(rows) == 0:
+        return "bad password"
+    cursor.execute("update users SET  password='%s' WHERE username='%s'" % (old_password, username ))
+    return "password changed"
