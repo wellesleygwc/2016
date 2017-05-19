@@ -69,6 +69,14 @@ def logins():
         return render_template('Profile.html', username=username, email=db.get_email(username), total_answers=db.get_total_answers(username), right_answers=db.get_right_answers(username))
     return redirect(url_for('login'))
 
+
+# Logout page
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    if 'username' in session:
+         del session['username']
+    return render_template('logout.html')
+
 #Profile
 @app.route('/profile')
 def profile():
