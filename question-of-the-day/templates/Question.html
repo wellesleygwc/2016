@@ -18,17 +18,21 @@ Enter your answer here:
 <br/>
 <br/>
 
-{% for answer in answers %}
-<ul>
-    <li> {{answer[2]}} </li>   
-</ul>
 
-{% endfor %}
+<form action="answers" method="post">
+    {% for answer in answers %}
+        {{answer[1]}} <input type="radio" name="answer" value="{{answer[3]}}"> {{answer[2]}} <br>
+    {% endfor %}
+    <input class="btn btn-default" type="submit" value="Check Answer">
+      </form>
+
+
+
+
 </body>
 
  <br/>
 <br/>
-<button type="button"> Check Answer </button>
 
 </html>
 

@@ -59,6 +59,16 @@ def question():
     question = db.get_question(id)
     return render_template('Question.html', question=question, answers=db.get_question_answers(id))
 
+#Answers
+@app.route('/answers', methods=['GET', 'POST'])
+def answers():
+    correct = request.form['answer']
+    id = 0
+    if correct == 'w':
+        id = str('Your answer is wrong.')
+    elif correct == 'r':
+        id = str('Your answer is correct! Good job!')
+    return render_template('answers.html', id=id)
 
 # Login page
 @app.route('/')
@@ -68,6 +78,14 @@ def logins():
         username=session['username']
         return render_template('Profile.html', username=username, email=db.get_email(username), total_answers=db.get_total_answers(username), right_answers=db.get_right_answers(username))
     return redirect(url_for('login'))
+
+
+# Logout page
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    if 'username' in session:
+         del session['username']
+    return render_template('logout.html')
 
 #Profile
 @app.route('/profile')
