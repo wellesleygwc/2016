@@ -51,6 +51,8 @@ def create_db():
     cursor.execute("insert or ignore into answers values ('Q0', 'B', 'A social gathering', 'w')")
     cursor.execute("insert or ignore into answers values ('Q1', 'A', 'A breakfast cereal', 'w')")
     cursor.execute("insert or ignore into answers values ('Q1', 'B', 'A sequence of instructions that is repeated until a certain condition is reached', 'r')")
+    cursor.execute("insert or ignore into answers values ('Q2', 'A', 'Hyper Type Machine Learning', 'w')")
+    cursor.execute("insert or ignore into answers values ('Q2', 'B', 'Hyper Test Markup Language', 'r')")
 
 
 
