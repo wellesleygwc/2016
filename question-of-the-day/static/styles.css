@@ -67,7 +67,7 @@ text-shadow: 3px 2px red;
         }
 
 
-     #answer-button {
+    .button {
         color: rgb(0,214,211);
         background: black;
         font-family: "Lucida Console";
