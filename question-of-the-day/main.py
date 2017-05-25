@@ -61,7 +61,7 @@ def question():
 
 #Answers
 @app.route('/answers', methods=['GET', 'POST'])
-def answers():
+def answers(href=None):
     correct = request.form['answer']
     id = 0
     if correct == 'w':
