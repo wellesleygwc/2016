@@ -26,11 +26,9 @@ def create_db():
                    ", constraint questions_unique unique (question))")
     cursor.execute("insert or ignore into questions values ('Q0', 'What is a function?', 'A', '2017-04-27')")
     cursor.execute("insert or ignore into questions values ('Q1', 'What is a loop?', 'B', '2017-04-26')")
-    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a function?', 'A', '2017-04-27')")
-    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What does HTML stand for?', 'A', '2017-04-27')")
-    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a variable?', 'B', '2017-04-27')")
-    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('Which would print \"hello world\"?', 'D', '2017-04-27')")
-    cursor.execute("insert or ignore into questions ('question', 'answer', 'day') values ('What is a loop?', 'B', '2017-04-26')")
+    cursor.execute("insert or ignore into questions values ('Q2', 'What does HTML stand for?', 'A', '2017-04-27')")
+    cursor.execute("insert or ignore into questions values ('Q3', 'What is a variable?', 'B', '2017-04-27')")
+    cursor.execute("insert or ignore into questions values ('Q4', 'Which would print hello world?', 'D', '2017-04-27')")
 
     cursor.execute("drop table if exists user_answers")
     cursor.execute("create table if not exists user_answers("+
@@ -52,7 +50,17 @@ def create_db():
     cursor.execute("insert or ignore into answers values ('Q1', 'A', 'A breakfast cereal', 'w')")
     cursor.execute("insert or ignore into answers values ('Q1', 'B', 'A sequence of instructions that is repeated until a certain condition is reached', 'r')")
     cursor.execute("insert or ignore into answers values ('Q2', 'A', 'Hyper Type Machine Learning', 'w')")
-    cursor.execute("insert or ignore into answers values ('Q2', 'B', 'Hyper Test Markup Language', 'r')")
+    cursor.execute("insert or ignore into answers values ('Q2', 'B', 'Hyper Text Markup Language', 'r')")
+    cursor.execute("insert or ignore into answers values ('Q3', 'A', 'A named section of a program that performs a specific task', 'w')")
+    cursor.execute("insert or ignore into answers values ('Q3', 'B', 'A quantity or function that may assume any given value or set of values', 'r')")
+    cursor.execute("""insert or ignore into answers values ('Q4', 'C', '<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <p>hello world</p>
+    <body>
 
     cursor.execute("drop table if exists main_answers")
     cursor.execute("create table if not exists main_answers("
@@ -61,6 +69,19 @@ def create_db():
                    ", correct text not null)")
     cursor.execute("insert or ignore into main_answers values ('A', 'Something that represents a value', 'r')")
     cursor.execute("insert or ignore into main_answers values ('B', 'A type of computer', 'w')")
+    </body>
+    </html>', 'r')""")
+
+    cursor.execute("""insert or ignore into answers values ('Q4', 'D', '<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <p>hello world</p>
+    </body>
+    </html>', 'r')""")
 
 
     # Save (commit) the changes

@@ -12,6 +12,10 @@ app = Flask(__name__)
 @app.route('/home')
 def Home():
     return render_template('HomePage.html', main_answers=db.get_main_answers())
+    if not 'username' in session:
+        return redirect(url_for('login'))
+
+    return render_template('HomePage.html')
 
 # Login page
 @app.route('/login', methods=['GET', 'POST'])
@@ -49,12 +53,16 @@ def addUser():
 #archives
 @app.route('/archives')
 def archives():
+    if not 'username' in session:
+        return redirect(url_for('login'))
     summary = db.question_summary()
     return render_template('Archives.html', summary=summary)
 
 #Question
 @app.route('/question')
 def question():
+    if not 'username' in session:
+        return redirect(url_for('login'))
     id = request.args.get('id')
     question = db.get_question(id)
     return render_template('Question.html', question=question, answers=db.get_question_answers(id))
@@ -74,6 +82,8 @@ def main_answer():
 #Answers
 @app.route('/answers', methods=['GET', 'POST'])
 def answers(href=None):
+    if not 'username' in session:
+        return redirect(url_for('login'))
     correct = request.form['answer']
     id = 0
     if correct == 'w':
@@ -102,10 +112,14 @@ def logout():
 #Profile
 @app.route('/profile')
 def profile():
+    if not 'username' in session:
+        return redirect(url_for('login'))
     return render_template('Profile.html')
 
 @app.route('/change password', methods=['GET', 'POST'])
 def change_password():
+    if not 'username' in session:
+        return redirect(url_for('login'))
     new_password=request.form['new_password']
     confirm_password=request.form['confirm_password']
     if new_password!=confirm_password:
