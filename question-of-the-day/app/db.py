@@ -53,7 +53,7 @@ def create_db():
     cursor.execute("insert or ignore into answers values ('Q2', 'B', 'Hyper Text Markup Language', 'r')")
     cursor.execute("insert or ignore into answers values ('Q3', 'A', 'A named section of a program that performs a specific task', 'w')")
     cursor.execute("insert or ignore into answers values ('Q3', 'B', 'A quantity or function that may assume any given value or set of values', 'r')")
-    cursor.execute("insert or ignore into answers values ('Q4', 'C', '<!DOCTYPE html>
+    cursor.execute("""insert or ignore into answers values ('Q4', 'C', '<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -63,8 +63,9 @@ def create_db():
     <body>
 
     </body>
-    </html>', 'r')")
-     cursor.execute("insert or ignore into answers values ('Q4', 'D', '<!DOCTYPE html>
+    </html>', 'r')""")
+
+    cursor.execute("""insert or ignore into answers values ('Q4', 'D', '<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -73,10 +74,7 @@ def create_db():
     <body>
     <p>hello world</p>
     </body>
-    </html>', 'r')")
-
--
-
+    </html>', 'r')""")
 
 
     # Save (commit) the changes
