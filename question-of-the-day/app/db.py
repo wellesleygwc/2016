@@ -45,7 +45,7 @@ def create_db():
                    "question_id text not null" +
                    ", letter text not null" +
                    ", answer_text text not null" +
-                   ", correct_text not null)")
+                   ", correct_text text not null)")
 
     cursor.execute("insert or ignore into answers values ('Q0', 'A', 'A named section of a program that performs a specific task', 'r')")
     cursor.execute("insert or ignore into answers values ('Q0', 'B', 'A social gathering', 'w')")
@@ -54,6 +54,13 @@ def create_db():
     cursor.execute("insert or ignore into answers values ('Q2', 'A', 'Hyper Type Machine Learning', 'w')")
     cursor.execute("insert or ignore into answers values ('Q2', 'B', 'Hyper Test Markup Language', 'r')")
 
+    cursor.execute("drop table if exists main_answers")
+    cursor.execute("create table if not exists main_answers("
+                   "letter text not null" +
+                   ", answer text not null" +
+                   ", correct text not null)")
+    cursor.execute("insert or ignore into main_answers values ('A', 'Something that represents a value', 'r')")
+    cursor.execute("insert or ignore into main_answers values ('B', 'A type of computer', 'w')")
 
 
     # Save (commit) the changes
@@ -123,6 +130,15 @@ def get_question_answers(id):
 
     return rows
 
+def get_main_answers():
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+
+    cursor.execute("select * from main_answers")
+    rows = cursor.fetchall()
+
+    connection.close()
+    return rows
 
 def get_right_answers(username):
     connection = sqlite3.connect(database_file)

@@ -11,6 +11,7 @@
 
 
 <body>
+<body style="..."> </body>
 
 <img src="static/logo.png" height="110" width="300">
 
@@ -24,9 +25,12 @@
 
 <br><br><br>
 
-   <button id="answer-button">
-       Click Here to Answer!
-   </button>
+<form action="HomeAnswer" method="post">
+    {% for option in main_answers %}
+        {{option[0]}} <input type="radio" name="homepageanswer" value="{{option[2]}}"> {{option[1]}} <br>
+    {% endfor %}
+    <input class="btn btn-default" type="submit" id="answer-button" value="Check">
+      </form>
 
 <br><br><br><br><br><br>
 

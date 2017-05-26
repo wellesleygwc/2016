@@ -11,7 +11,7 @@ app = Flask(__name__)
 # Home page
 @app.route('/home')
 def Home():
-    return render_template('HomePage.html')
+    return render_template('HomePage.html', main_answers=db.get_main_answers())
 
 # Login page
 @app.route('/login', methods=['GET', 'POST'])
@@ -58,6 +58,18 @@ def question():
     id = request.args.get('id')
     question = db.get_question(id)
     return render_template('Question.html', question=question, answers=db.get_question_answers(id))
+
+#Main Page Question
+@app.route('/HomeAnswer', methods=['GET', 'POST'])
+def main_answer():
+    correct = request.form['homepageanswer']
+    id = 0
+    if correct == 'w':
+        id = str('Your answer is wrong.')
+    elif correct == 'r':
+        id = str('Your answer is correct! Good job!')
+    return render_template('HomeAnswer.html', id=id, main_answers=db.get_main_answers())
+
 
 #Answers
 @app.route('/answers', methods=['GET', 'POST'])
