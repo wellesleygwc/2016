@@ -27,11 +27,7 @@ font-size: 40;
 <img src="static/logo.png" height="110" width="300">
 
 <br><br>
-<td><a ID="links" href="home">Home</a></td>
-<td><a ID="links" href="archives">Archives</a></td>
-<td><a ID="links" href="profile">Profile</a></td>
-<td><a ID="links" href="logout">Logout</a></td>
-
+{% include 'links.html' %}
 <div class="title">
     <h1 align="center">Archives</h1>
 
@@ -57,5 +53,7 @@ font-size: 40;
     {% endfor %}
 
 </table>
+    <br><br><br><br><br><br><br><br><br>
+ <p4>  © 2017 Girls Who Code - Wellesley Chapter </p4>
 </body>
 </html>

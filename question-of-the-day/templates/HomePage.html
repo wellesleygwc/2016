@@ -14,18 +14,9 @@
 
 <img src="static/logo.png" height="110" width="300">
 
-<br><br><br>
-<div style="    border-top-style: dotted;
-    border-right-style: solid;
-    border-bottom-style: dotted;
-    border-left-style: solid;
- border-width: medium;
- width: 200px">
-<td><a ID="links" href="home">Home</a></td>
-<td><a ID="links" href="archives">Archives</a></td>
-<td><a ID="links" href="profile">Profile</a></td>
-<td><a ID="links" href="logout">Logout</a></td>
-</div>
+<br><br>
+
+{% include 'links.html' %}
 
 <br><br><br><br>
 <p1><b>What coding language is typically used with HTML?</b>
@@ -33,9 +24,9 @@
 
 <br><br><br>
 
-   <p2 id="answer-button">
-       Click Here to Answer!
-   </p2>
+   <button id="answer-button">
+     <a href="question?id=Qo">Click Here to Answer!</a>
+   </button>
 
 <br><br><br><br><br><br>
 
@@ -46,7 +37,7 @@
        For our final impact project we decided to make a website to help people learn about coding.
    </div>
 
-<br><br><br><br><br><br><br><br><br>
+<br><br>
 
  <p4>  © 2017 Girls Who Code - Wellesley Chapter </p4>
    </body>
