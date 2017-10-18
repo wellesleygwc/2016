@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 # Home page
 @app.route('/home')
-def Home():
+def home():
     return render_template('HomePage.html', main_answers=db.get_main_answers())
     if not 'username' in session:
         return redirect(url_for('login'))
@@ -26,7 +26,7 @@ def login():
         password = request.form['password']
         if db.check_password(username, password):
             session['username'] = username
-            return redirect(url_for('Home'))
+            return redirect(url_for('home'))
         else:
             session.clear()
             error = 'Invalid Credentials. Please try again.'

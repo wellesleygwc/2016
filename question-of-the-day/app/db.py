@@ -53,15 +53,6 @@ def create_db():
     cursor.execute("insert or ignore into answers values ('Q2', 'B', 'Hyper Text Markup Language', 'r')")
     cursor.execute("insert or ignore into answers values ('Q3', 'A', 'A named section of a program that performs a specific task', 'w')")
     cursor.execute("insert or ignore into answers values ('Q3', 'B', 'A quantity or function that may assume any given value or set of values', 'r')")
-    cursor.execute("""insert or ignore into answers values ('Q4', 'C', '<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <p>hello world</p>
-    <body>
-
     cursor.execute("drop table if exists main_answers")
     cursor.execute("create table if not exists main_answers("
                    "letter text not null" +
@@ -69,9 +60,6 @@ def create_db():
                    ", correct text not null)")
     cursor.execute("insert or ignore into main_answers values ('A', 'Something that represents a value', 'r')")
     cursor.execute("insert or ignore into main_answers values ('B', 'A type of computer', 'w')")
-    </body>
-    </html>', 'r')""")
-
     cursor.execute("""insert or ignore into answers values ('Q4', 'D', '<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -146,7 +134,7 @@ def get_question_answers(id):
 
     cursor.execute("select * from answers where question_id='%s'" % (id))
     rows = cursor.fetchall()
-    print rows
+    print(rows)
     connection.close()
 
     return rows
@@ -190,7 +178,7 @@ def question_summary():
 
     cursor.execute("select id, question, day from questions order by day DESC")
     rows = cursor.fetchall()
-    print rows
+    print(rows)
     connection.close()
 
     return rows
